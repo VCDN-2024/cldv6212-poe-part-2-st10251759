@@ -1,0 +1,116 @@
+﻿@model ST10251759_CLDV6212_POE_Part_1.Models.Order
+
+@{
+    ViewData["Title"] = "Create Order";
+}
+
+<h1>Create Order</h1>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="CustomerEmail" class="control-label">Customer</label>
+        <select asp-for="CustomerEmail" class="form-control" asp-items="ViewBag.Users"></select>
+        <span asp-validation-for="CustomerEmail" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ProductId" class="control-label">Product</label>
+        <select asp-for="ProductId" class="form-control" asp-items="ViewBag.Products"></select>
+        <span asp-validation-for="ProductId " class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="OrderDate" class="control-label">Order Date</label>
+        <input asp-for="OrderDate" class="form-control" type="date" />
+        <span asp-validation-for="OrderDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="OrderStatus" class="control-label"></label>
+        @Html.DropDownList("OrderStatus", (SelectList)ViewBag.OrderStatusList, "Select order status", new { @class = "form-control" })
+        <span asp-validation-for="OrderStatus" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<style>
+    /* General Styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4; /* Light background for contrast */
+        color: #333; /* Dark text for readability */
+        margin: 0;
+        padding: 0;
+    }
+
+    main {
+        background-color: #051c42;
+    }
+
+    /* Heading Style */
+    h1 {
+        text-align: center;
+        color: #fff; /* Dark blue color for the heading */
+        margin-bottom: 20px;
+    }
+
+    /* Form Container Style */
+    form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff; /* White background for the form */
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Form Group Style */
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    /* Label Style */
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #051c42; /* Dark blue color for labels */
+    }
+
+    /* Input Field Style */
+    input.form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    /* Validation Error Style */
+    .text-danger {
+        color: #8c0307; /* Red color for validation errors */
+        font-size: 0.875em;
+        margin-top: 5px;
+    }
+
+    /* Button Style */
+    button.btn-primary {
+        background-color: #051c42; /* Dark blue background */
+        color: #fff; /* White text */
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: background-color 0.3s ease;
+    }
+
+        /* Button Hover Style */
+        button.btn-primary:hover {
+            background-color: #8c0307; /* Red background on hover */
+        }
+
+</style>

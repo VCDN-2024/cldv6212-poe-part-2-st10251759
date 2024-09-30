@@ -1,0 +1,148 @@
+﻿@model ST10251759_CLDV6212_POE_Part_1.Models.User
+
+@{
+    ViewData["Title"] = "Customer Details";
+}
+
+<h1 class="page-title">Customer Details</h1>
+
+<div class="customer-info">
+    <h4 class="section-title">Customer</h4>
+    <hr class="section-divider" />
+    <dl class="customer-details">
+        <dt class="detail-label">
+            Full Name
+        </dt>
+        <dd class="detail-value">
+            @Model.FullName
+        </dd>
+
+        <dt class="detail-label">
+            Email Address
+        </dt>
+        <dd class="detail-value">
+            @Model.Email
+        </dd>
+
+        <dt class="detail-label">
+            Role
+        </dt>
+        <dd class="detail-value">
+            @Model.Role
+        </dd>
+        <dt class="detail-label">
+            Date created
+        </dt>
+        <dd class="detail-value">
+            @Model.Timestamp
+        </dd>
+    </dl>
+</div>
+
+<div class="action-buttons">
+    <a href="@Url.Action("Edit", new { partitionKey = Model.PartitionKey, rowKey = Model.RowKey })" class="btn btn-warning">Edit</a>
+    <a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>
+</div>
+
+<form asp-action="Delete" method="post" class="delete-form">
+    <input type="hidden" name="partitionKey" value="@Model.PartitionKey" />
+    <input type="hidden" name="rowKey" value="@Model.RowKey" />
+    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this customer?');">Delete</button>
+</form>
+
+<style>
+    /* Page Title */
+    .page-title {
+        text-align: center;
+        color: #fff; /* Dark blue color */
+        margin-top: 20px;
+        font-size: 2em;
+    }
+
+    main {
+        background-color: #051c42;
+    }
+
+    /* Customer Info Section */
+    .customer-info {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff; /* White background for clarity */
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-title {
+        color: #051c42; /* Dark blue color for section titles */
+        margin-bottom: 10px;
+        font-size: 1.5em;
+    }
+
+    .section-divider {
+        border: 0;
+        height: 1px;
+        background-color: #ddd; /* Light gray color for the divider */
+        margin-bottom: 20px;
+    }
+
+    .customer-details {
+        margin: 0;
+    }
+
+    .detail-label {
+        font-weight: bold;
+        color: #051c42; /* Dark blue color for labels */
+        margin-bottom: 5px;
+    }
+
+    .detail-value {
+        margin-bottom: 15px;
+    }
+
+    /* Action Buttons */
+    .action-buttons {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        border-radius: 4px;
+        font-size: 1em;
+        color: #fff;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-warning {
+        background-color: #ffc107; /* Bootstrap warning color */
+    }
+
+        .btn-warning:hover {
+            background-color: #e0a800; /* Darker yellow for hover */
+        }
+
+    .btn-secondary {
+        background-color: #6c757d; /* Bootstrap secondary color */
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268; /* Darker gray for hover */
+        }
+
+    .btn-danger {
+        background-color: #dc3545; /* Bootstrap danger color */
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333; /* Darker red for hover */
+        }
+
+    /* Delete Form */
+    .delete-form {
+        text-align: center;
+    }
+
+</style>

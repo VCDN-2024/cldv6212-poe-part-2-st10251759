@@ -1,0 +1,148 @@
+﻿@model List<ST10251759_CLDV6212_POE_Part_1.Models.FileModel>
+
+<h1>Files</h1>
+
+<!-- Display any messages -->
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-info">
+        @TempData["Message"]
+    </div>
+}
+
+<!-- Upload form -->
+<form asp-action="Upload" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="file">Choose a file to upload:</label>
+        <input type="file" name="file" class="form-control" />
+        <button type="submit" class="btn btn-primary mt-2">Upload</button>
+    </div>
+</form>
+
+<!-- Display uploaded files -->
+@if (Model != null && Model.Count > 0)
+{
+    <ul>
+        @foreach (var file in Model)
+        {
+            <li>
+                @file.Name -
+                Size: @file.DisplaySize -
+                Last Modified: @file.LastModified?.ToString("g")
+                - <a asp-action="DownloadFile" asp-route-fileName="@file.Name">Download</a>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No files found or model is null.</p>
+}
+
+<style>
+    /* General Styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4; /* Light background for contrast */
+        color: #333; /* Dark text for readability */
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Heading Style */
+    h1 {
+        text-align: center;
+        color: #051c42; /* Dark blue color for the heading */
+        margin: 20px 0;
+    }
+
+    /* Alert Message Style */
+    .alert {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 15px;
+        border-radius: 4px;
+        color: #155724; /* Dark green text for info */
+        background-color: #d4edda; /* Light green background */
+        border: 1px solid #c3e6cb;
+    }
+
+    /* Form Styles */
+    form {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff; /* White background for the form */
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Form Group Styles */
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    /* Label Styles */
+    label {
+        display: block;
+        font-weight: bold;
+        color: #051c42; /* Dark blue color for labels */
+        margin-bottom: 5px;
+    }
+
+    /* File Input and Button Styles */
+    input[type="file"] {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc; /* Light border for inputs */
+        border-radius: 4px;
+        box-sizing: border-box; /* Ensure padding and border are included in width */
+    }
+
+    button[type="submit"] {
+        display: inline-block;
+        padding: 10px 20px;
+        border-radius: 4px;
+        color: #fff; /* White text */
+        background-color: #051c42; /* Dark blue background */
+        border: none;
+        cursor: pointer;
+        font-size: 1em;
+        transition: background-color 0.3s ease;
+        margin-top: 10px; /* Space above the button */
+    }
+
+        button[type="submit"]:hover {
+            background-color: #8c0307; /* Red background on hover */
+        }
+
+    /* List Styles */
+    ul {
+        list-style-type: none;
+        padding: 0;
+        max-width: 600px;
+        margin: 20px auto;
+    }
+
+    li {
+        padding: 10px;
+        border-bottom: 1px solid #ddd; /* Light border for item separation */
+    }
+
+        li a {
+            color: #051c42; /* Dark blue color for links */
+            text-decoration: none; /* Remove underline */
+        }
+
+            li a:hover {
+                text-decoration: underline; /* Underline on hover */
+            }
+
+    /* No Files Message Style */
+    p {
+        text-align: center;
+        color: #666; /* Grey color for no files message */
+    }
+
+</style>

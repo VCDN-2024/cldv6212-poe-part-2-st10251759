@@ -1,0 +1,104 @@
+﻿@model ST10251759_CLDV6212_POE_Part_1.Models.Product
+
+<h2>Add New Product</h2>
+
+<form asp-action="AddProduct" method="post" enctype="multipart/form-data">
+    <div>
+        <label for="Name">Name</label>
+        <input type="text" id="Name" name="Name" required />
+    </div>
+    <div>
+        <label for="ProductDescription">Description</label>
+        <textarea id="ProductDescription" name="ProductDescription"></textarea>
+    </div>
+    <div>
+        <label for="Price">Price</label>
+        <input type="number" id="Price" name="Price" step="0.01" required />
+    </div>
+    <div>
+        <label for="Category">Category</label>
+        <input type="text" id="Category" name="Category" required />
+    </div>
+    <div>
+        <label for="file">Image</label>
+        <input type="file" id="file" name="file" />
+    </div>
+    <button type="submit">Add Product</button>
+</form>
+
+<style>
+    /* General Styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4; /* Light background for contrast */
+        color: #333; /* Dark text for readability */
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Heading Style */
+    h2 {
+        text-align: center;
+        color: #051c42; /* Dark blue color for the heading */
+        margin-bottom: 20px;
+    }
+
+    /* Form Container Style */
+    form {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff; /* White background for the form */
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Form Element Styles */
+    div {
+        margin-bottom: 15px;
+    }
+
+    /* Label Style */
+    label {
+        display: block;
+        font-weight: bold;
+        color: #051c42; /* Dark blue color for labels */
+        margin-bottom: 5px;
+    }
+
+    /* Input and Textarea Styles */
+    input[type="text"],
+    input[type="number"],
+    textarea,
+    input[type="file"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc; /* Light border for inputs */
+        border-radius: 4px;
+        box-sizing: border-box; /* Ensure padding and border are included in width */
+    }
+
+    /* Textarea Specific Styles */
+    textarea {
+        height: 100px; /* Set a default height for textarea */
+        resize: vertical; /* Allow vertical resizing */
+    }
+
+    /* Button Styles */
+    button {
+        display: inline-block;
+        padding: 10px 20px;
+        border-radius: 4px;
+        color: #fff; /* White text */
+        background-color: #051c42; /* Dark blue background */
+        border: none;
+        cursor: pointer;
+        font-size: 1em;
+        transition: background-color 0.3s ease;
+    }
+
+        button:hover {
+            background-color: #8c0307; /* Red background on hover */
+        }
+
+</style>

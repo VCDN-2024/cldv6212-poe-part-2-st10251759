@@ -1,0 +1,270 @@
+﻿﻿<!--
+ --------------------------------Student Information----------------------------------
+ STUDENT NO.: ST10251759
+ Name: Cameron Chetty
+ Course: BCAD Year 2
+ Module: Cloud Development 1B
+ Module Code: CLDV6212
+ Assessment: Portfolio of Evidence (POE) Part 2
+ Github repo link: https://st10251759-cldv6212-poe-part-2.azurewebsites.net/
+ --------------------------------Student Information----------------------------------
+-->
+<!--
+ ==============================Code Attribution==================================
+
+
+ Author: w3schools
+ Link: https://www.w3schools.com/html/
+ Date Accessed: 16 August 2024
+
+ Author: HTML Codex
+ Link:https://htmlcodex.com/
+ Date Accessed: 16 August 2024
+
+ Author: w3schools
+ Link: https://www.w3schools.com/css/
+ Date Accessed: 16 August 2024
+
+ Author: w3schools
+ Link: https://www.w3schools.com/js/
+ Date Accessed: 16 August 2024
+
+ Author: Mick Gouweloos
+ Link: https://github.com/mickymouse777/Cloud_Storage/tree/master/Cloud_Storage
+ Date Accessed: 16 August 2024
+
+ Author: Microsoft
+ Link: https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview?pivots=programming-language-csharp
+ Date Accessed: 25 September 2024
+
+ Author: Microsoft
+ Link: https://learn.microsoft.com/en-us/azure/service-connector/quickstart-portal-functions-connection?tabs=SMI
+ Date Accessed: 25 September 2024
+
+ Author: Microsoft
+ Link: https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-blob?tabs=isolated-process%2Cextensionv5%2Cextensionv3&pivots=programming-language-csharp
+ Date Accessed: 25 September 2024
+
+ Author: Microsoft
+ Link: https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=python-v2%2Cisolated-process%2Cnodejs-v4%2Cextensionv5&pivots=programming-language-csharp
+ Date Accessed: 25 September 2024
+
+ Author: Microsoft
+ Link: https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-table?tabs=isolated-process%2Ctable-api%2Cextensionv3&pivots=programming-language-csharp
+ Date Accessed: 25 September 2024
+
+
+ *********All Images used throughout project are adapted from Pinterest (https://www.furiousmotorsport.com/)*************
+
+
+ ==============================Code Attribution==================================
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - ABC Retailers</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="~/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="~/lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="~/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="~/css/style.css" rel="stylesheet">
+
+    <!-- Font Awesome-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+</head>
+<body>
+    <header>
+        <!-- Spinner Start -->
+        <div id="spinner" class="bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+        <!-- Topbar Start -->
+        <div class="container-fluid bg-light p-0">
+            <div class="row gx-0 d-none d-lg-flex">
+                <div class="col-lg-7 px-5 text-start">
+                    <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                        <small class="fa fa-map-marker-alt text-primary me-2"></small>
+                        <small>123 Street, Kwa-Zulu Natal, South Africa</small>
+                    </div>
+                    <div class="h-100 d-inline-flex align-items-center py-3">
+                        <small class="far fa-clock text-primary me-2"></small>
+                        <small>Mon - Fri : 09.00 AM - 09.00 PM</small>
+                    </div>
+                </div>
+                <div class="col-lg-5 px-5 text-end">
+                    <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                        <small class="fa fa-phone-alt text-primary me-2"></small>
+                        <small>+27 345 6789</small>
+                    </div>
+                    <div class="h-100 d-inline-flex align-items-center">
+                        <a class="btn btn-sm-square bg-white text-primary me-1" href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-sm-square bg-white text-primary me-1" href="https://twitter.com/?lang=en"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-sm-square bg-white text-primary me-1" href="https://za.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-sm-square bg-white text-primary me-0" href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Topbar End -->
+        <!-- Navbar Start -->
+        <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
+            <a href="/" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+                <h2 class="m-0 text-primary">ABC Retailers©</h2>
+            </a>
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav me-auto p-4 p-lg-0">
+                    <!--Display links accounting to User Role-->
+                    @if (ViewBag.UserRole == "Admin")
+                    {
+                        <a href="/" class="nav-item nav-link">Home</a>
+                        <a href="/About" class="nav-item nav-link">About Us</a>
+                        <a href="/Products" class="nav-item nav-link">Products</a>
+                        <a href="/Orders" class="nav-item nav-link">Orders</a>
+                        <a href="/Orders/MyOrders" class="nav-item nav-link">My Orders</a>
+                        <a href="/Users" class="nav-item nav-link">Users</a>
+                        <a href="/Files" class="nav-item nav-link">My Files</a>
+                    }
+                    else if (ViewBag.UserRole == "Customer")
+                    {
+                        <a href="/" class="nav-item nav-link">Home</a>
+                        <a href="/About" class="nav-item nav-link">About Us</a>
+                        <a href="/Products/Inventory" class="nav-item nav-link">Browse Products</a>
+                        <a href="/Orders/MyOrders" class="nav-item nav-link">My Orders</a>
+                    }
+                    else if (ViewBag.UserRole == "Guest")
+                    {
+                        <a href="/" class="nav-item nav-link">Home</a>
+                        <a href="/About" class="nav-item nav-link">About Us</a>
+                    }
+
+                </div>
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <div class="navbar-nav ms-auto p-4 p-lg-0">
+                        @await Html.PartialAsync("_LoginPartial")
+                    </div>
+                </div> 
+            </div>
+        </nav>
+
+    </header>
+    <!-- Navbar End -->
+    <div class="">
+        <main role="main" class="pb-3">
+            <!--RenderBody is typically used to render the view content for each specific page. -->
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <!-- Footer Start -->
+
+        <div class="container-fluid bg-dark text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-lg-4 col-md-4">
+                        <h4 class="text-light mb-4">Address</h4>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, Kwa-Zulu Natal, South Africa</p>
+                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+27 345 67890</p>
+                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>abcretailers@example.com</p>
+                        <div class="d-flex pt-2">
+                            <a class="btn btn-outline-light btn-social" href="https://twitter.com/?lang=en"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-social" href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light btn-social" href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
+                            <a class="btn btn-outline-light btn-social" href="https://za.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <h4 class="text-light mb-4">My Work</h4>
+                        <a class="btn btn-link" asp-controller="Products" asp-action="Index">Product List</a>
+                        <a class="btn btn-link" asp-controller="Orders" asp-action="Index">Order List</a>
+                        <a class="btn btn-link" asp-controller="Users" asp-action="Index">Users List</a>
+                        <a class="btn btn-link" asp-controller="Files" asp-action="Index">Contract Documents</a>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <h4 class="text-light mb-4">Quick Links</h4>
+                        <a class="btn btn-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="btn btn-link" asp-area="" asp-controller="About" asp-action="Index">About Us</a>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="copyright">
+                    <div class="row">
+                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                            &copy; <a class="border-bottom" href="#">ABC Retailers</a>, All Right Reserved.
+                        </div>
+                        <div class="col-md-6 text-center text-md-end">
+                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                            Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-0 back-to-top"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/wow/wow.min.js"></script>
+    <script src="~/lib/easing/easing.min.js"></script>
+    <script src="~/lib/waypoints/waypoints.min.js"></script>
+    <script src="~/lib/counterup/counterup.min.js"></script>
+    <script src="~/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="~/lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="~/lib/lightbox/js/lightbox.min.js"></script>
+    <script>
+        window.addEventListener('load', function () {
+            document.getElementById('spinner').classList.remove('show');
+        });
+    </script>
+    <!-- Template Javascript -->
+    <script src="~/js/main.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

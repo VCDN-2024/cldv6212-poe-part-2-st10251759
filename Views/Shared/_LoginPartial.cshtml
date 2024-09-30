@@ -1,0 +1,33 @@
+﻿@{
+    var isLoggedIn = ViewBag.IsLoggedIn ?? false;
+}
+
+@if (isLoggedIn)
+{
+    <div class="dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Welcome, @ViewBag.UserName
+        </a>
+        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <li>
+                <a class="dropdown-item" href="#" id="logout-link">Logout</a>
+            </li>
+        </ul>
+    </div>
+}
+else
+{
+    <a href="/Account/Login" class="nav-item nav-link">Login</a>
+    <a href="/Account/Register/" class="nav-item nav-link">Register</a>
+}
+
+<script>
+    document.getElementById("logout-link").addEventListener("click", function (e) {
+        e.preventDefault();
+        var form = document.createElement("form");
+        form.method = "post";
+        form.action = "/Account/Logout";
+        document.body.appendChild(form);
+        form.submit();
+    });
+</script>

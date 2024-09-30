@@ -1,0 +1,125 @@
+﻿@model IEnumerable<ST10251759_CLDV6212_POE_Part_1.Models.Product>
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h1>Products</h1>
+<a href="@Url.Action("AddProduct", "Products")" class="btn btn-primary">Add New Product</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.ProductDescription</td>
+                <td>R @product.Price.ToString("0.00")</td>
+                <td>@product.Category</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(product.ImageUrlPath))
+                    {
+                        <img src="@product.ImageUrlPath" alt="@product.Name" style="width:100px;height:auto;" />
+                    }
+                </td>
+                <td>
+                    <form asp-action="DeleteProduct" method="post" style="display:inline;">
+                        <input type="hidden" name="partitionKey" value="@product.PartitionKey" />
+                        <input type="hidden" name="rowKey" value="@product.RowKey" />
+                        <input type="hidden" name="ImageUrlPath" value="@product.ImageUrlPath" />
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this product?');">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    /* General Styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4; /* Light background for contrast */
+        color: #333; /* Dark text for readability */
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Heading Style */
+    h1 {
+        text-align: center;
+        color: #051c42; /* Dark blue color for the heading */
+        margin-bottom: 20px;
+    }
+
+    /* Button Styles */
+    a.btn-primary {
+        display: inline-block;
+        padding: 10px 20px;
+        border-radius: 4px;
+        color: #fff; /* White text */
+        background-color: #051c42; /* Dark blue background */
+        text-decoration: none; /* Remove underline */
+        font-size: 1em;
+        transition: background-color 0.3s ease;
+        margin-bottom: 20px; /* Space below the button */
+    }
+
+        a.btn-primary:hover {
+            background-color: #8c0307; /* Red background on hover */
+        }
+
+    /* Table Styles */
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0 auto;
+        background-color: #fff; /* White background for the table */
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden; /* Ensure rounded corners are visible */
+    }
+
+        /* Table Header Styles */
+        .table thead th {
+            background-color: #051c42; /* Dark blue background for the header */
+            color: #fff; /* White text */
+            padding: 12px;
+            text-align: left;
+        }
+
+        /* Table Body Styles */
+        .table tbody td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0; /* Light border for row separation */
+        }
+
+        /* Table Row Hover Effect */
+        .table tbody tr:hover {
+            background-color: #f1f1f1; /* Light grey background on hover */
+        }
+
+        /* Image Styles */
+        .table img {
+            width: 100px; /* Fixed width for images */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 4px; /* Rounded corners for images */
+        }
+
+    /* Button Inside Table Styles */
+    .btn-danger {
+        padding: 8px 12px;
+        border-radius: 4px;
+        color: #fff; /* White text */
+        background-color: #dc3545;
+</style>

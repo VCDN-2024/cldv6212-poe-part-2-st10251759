@@ -1,0 +1,118 @@
+﻿@model IEnumerable<ST10251759_CLDV6212_POE_Part_1.Models.Order>
+
+<div class="container-products">
+    <h1>All Orders</h1>
+    <a href="@Url.Action("Inventory", "Products")" class="btn btn-primary">Add New Order</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Product ID</th>
+                <th>Order Date</th>
+                <th>Order Staus</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td>@order.OrderId</td>
+                    <td>@order.CustomerEmail</td>
+                    <td>@order.ProductId</td>
+                    <td>@order.OrderDate</td>
+                    <td>@order.OrderStatus</td>
+
+                    <td>
+                        <a href="@Url.Action("Edit", "Orders", new { partitionKey = order.PartitionKey, rowKey = order.RowKey })" class="btn btn-warning">Process</a>
+
+                        <form asp-action="Delete" asp-controller="Orders" method="post" style="display:inline;">
+                            <input type="hidden" name="partitionKey" value="@order.PartitionKey" />
+                            <input type="hidden" name="rowKey" value="@order.RowKey" />
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this order?');">Delete</button>
+                        </form>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #051c42;
+        margin: 0;
+        padding: 0;
+    }
+
+    main {
+        background-color: #051c42;
+    }
+
+    .container-products {
+        width: 80%;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .btn-primary {
+        background-color: #051c42;
+        color: #fff;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .btn-primary:hover {
+            background-color: #8c0307;
+            border-color: #fff !important;
+            color: #fff;
+        }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+</style>

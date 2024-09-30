@@ -1,0 +1,181 @@
+﻿@model IEnumerable<ST10251759_CLDV6212_POE_Part_1.Models.Product>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ABC Retail</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <style>
+        /* Page Styling */
+        body {
+            margin-bottom: -300px;
+        }
+
+        .description-block{
+            height: 120px;
+        }
+
+        /* Header styling */
+        .headerbg {
+            background-color: #051c42;
+            margin-bottom: 65px;
+        }
+
+        /* Footer styling */
+        .footercustom {
+            background-color: #051c42;
+            color: white !important;
+            font-size: 20px;
+            text-align: center;
+            padding-top: 10px;
+            padding-bottom: 30px;
+            margin-bottom: auto;
+            width: 100vw;
+            position: absolute;
+            left: 0;
+        }
+
+        .add-to-cart-form {
+            display: inline-block;
+        }
+
+        .styled-button {
+            background-color: #051c42;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 15px;
+        }
+
+            .styled-button:hover {
+                background-color: #051c42;
+                transform: scale(1.05);
+            }
+
+            .styled-button:focus {
+                outline: none;
+            }
+
+            .styled-button:active {
+                transform: scale(0.95);
+            }
+
+        /* Card styling */
+        .product-card {
+            margin-bottom: 20px;
+        }
+
+            .product-card .card-img-top {
+               height: 250px;
+                object-fit: cover;
+            }
+
+            .product-card .card-body h5 {
+                font-weight: bold;
+            }
+
+            .product-card .price-text {
+                font-size: 1.2rem;
+                font-weight: bold;
+                color: steelblue;
+            }
+
+            .product-card .product-name{
+                height: 50px;
+            }
+
+            .product-card .btn {
+                background-color: #051c42 !important;
+                color: white !important;
+                border-color: #051c42 !important;
+            }
+
+                .product-card .btn:hover {
+                    background-color: black !important;
+                    color: white !important;
+                }
+    </style>
+</head>
+<body>
+    <header class="headerbg py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder" style="color:#fff;">Shop Your Favorite Products</h1>
+                <p class="lead fw-normal text-white-50 mb-0">Browse our collection and place your order!</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Products Section -->
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                @foreach (var product in Model)
+                {
+                    <div class="col mb-5 product-card">
+                        <div class="card h-100">
+                            <img class="card-img-top" src="@Url.Content(product.ImageUrlPath)" alt="@product.Name" />
+                            <div class="card-body p-4 text-center">
+                                <h5 class="fw-bolder product-name">@product.Name</h5>
+                                <p class="text-muted">@product.Category</p>
+                                <p class="description-block">@product.ProductDescription</p>
+                                <p class="price-text">Price: R @product.Price</p>
+                            </div>
+                            <div class="card-footer p-4 pt-0 text-center">
+                                <form asp-controller="Products" asp-action="Purchase" method="post" class="add-to-cart-form">
+                                    <input type="hidden" name="ProductId" value="@product.ProductId" />
+                                    <input type="hidden" name="CustomerEmail" value="@User.Identity.Name" />
+                                    <button type="submit" class="styled-button">Purchase</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footercustom">
+        <div class="container text-center">Copyright © 2024 ABC F1 Retail | We provide a fashion exprience that speaks to your unique Style and Personality</div>
+    </footer>
+
+    <!-- Order Confirmation Modal -->
+    <div class="modal fade" id="orderConfirmationModal" tabindex="-1" aria-labelledby="orderConfirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #051c42; color: white;">
+                    <h5 class="modal-title" id="orderConfirmationModalLabel" style="color:#fff;">Order Confirmed!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Thank you for your order! Your purchase has been confirmed successfully.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="@Url.Action("MyOrders","Orders")" class="btn btn-primary">View My Orders</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var orderConfirmationMessage = '@TempData["OrderConfirmation"]';
+            if (orderConfirmationMessage) {
+                $('#orderConfirmationModal').modal('show');
+                $('.modal-body').text(orderConfirmationMessage);  // Set the message in the modal body
+            }
+        });
+    </script>
+</body>
+</html>

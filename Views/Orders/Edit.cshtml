@@ -1,0 +1,141 @@
+﻿@model ST10251759_CLDV6212_POE_Part_1.Models.OrderViewModel
+
+@{
+    ViewData["Title"] = "Edit Order";
+}
+
+<h2 class="page-title">Edit Order</h2>
+
+<form asp-action="Edit" method="post" class="edit-customer-form">
+    <input type="hidden" asp-for="PartitionKey" />
+    <input type="hidden" asp-for="RowKey" />
+
+    <div class="form-group">
+        <label asp-for="OrderId" class="control-label"></label>
+        <input asp-for="OrderId" class="form-control" readonly />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CustomerEmail" class="control-label"></label>
+        <input asp-for="CustomerEmail" class="form-control" readonly />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ProductName" class="control-label">Product</label>
+        <input asp-for="ProductName" class="form-control" readonly /> <!-- Display product name instead of ProductId -->
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrderDate" class="control-label"></label>
+        <input asp-for="OrderDate" class="form-control" readonly />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrderStatus" class="control-label"></label>
+        <select asp-for="OrderStatus" class="form-control" asp-items="ViewBag.OrderStatusList"></select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+
+<style>
+    /* Page Title */
+    .page-title {
+        text-align: center;
+        color: #fff; /* Dark gray for title */
+        margin-top: 20px;
+        font-size: 2em;
+    }
+
+    main {
+        background-color: #051c42;
+    }
+
+    /* Section Divider */
+    .section-divider {
+        border: 0;
+        height: 1px;
+        background-color: #ddd; /* Light gray for the divider */
+        margin: 20px 0;
+    }
+
+    /* Form Container */
+    .edit-customer-form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9; /* Light gray background */
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Form Group */
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    /* Labels */
+    .form-label {
+        font-weight: bold;
+        color: #333; /* Dark gray for labels */
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    /* Input Fields */
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc; /* Light gray border */
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 1em;
+        margin-bottom: 5px;
+    }
+
+        /* Read-Only Input */
+        .form-control[readonly] {
+            background-color: #e9ecef; /* Light gray background for read-only fields */
+            cursor: not-allowed;
+        }
+
+    /* Validation Messages */
+    .validation-message {
+        color: #dc3545; /* Bootstrap danger color for validation messages */
+        font-size: 0.875em;
+    }
+
+    /* Action Buttons */
+    .form-actions {
+        text-align: center;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        border-radius: 4px;
+        font-size: 1em;
+        color: #fff;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary {
+        background-color: #007bff; /* Bootstrap primary color */
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker blue for hover */
+        }
+
+    .btn-secondary {
+        background-color: #6c757d; /* Bootstrap secondary color */
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268; /* Darker gray for hover */
+        }
+
+</style>
